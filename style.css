@@ -11,8 +11,10 @@
   .minesweeper-cell {
     width: 40px; /* Adjust cell width */
     height: 40px; /* Adjust cell height */
-    background-color: #bbb; /* Default cell color */
-    border: 5px inset #999; /* Cell border */
+    background-color: #c0c0c0; /* Default cell color */
+  /*  border: 2px outset #ececec;  Cell border */
+    border: 3px solid;
+	border-color: #7d7d7d #fff #fff #7d7d7d;
     display: flex;
     justify-content: center;
     align-items: center;
