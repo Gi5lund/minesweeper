@@ -1,0 +1,85 @@
+:root{
+    --COLS: 10;
+    --ROWS:10;
+}
+#minefield{
+    display: grid;
+    border: 2px solid #000; /* Grid border */
+    grid-template-columns: repeat(var(--COLS), 40px); 
+  }
+  #board{
+   display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  /* Cell styling */
+  .cell {
+    width: 40px; /* Adjust cell width */
+    height: 40px; /* Adjust cell height */
+    background-color: #c0c0c0; /* Default cell color */
+  /*  border: 2px outset #ececec;  Cell border */
+    border: 3px solid;
+	border-color: #7d7d7d #fff #fff #7d7d7d;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    font-size: 20px; /* Adjust font size */
+    color: #333; /* Text color */
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+  
+  /* Styling for revealed cells */
+  .cell.revealed {
+    background-color: #fff; /* Adjust revealed cell color */
+    cursor: default;
+  }
+  
+  /* Styling for flagged cells */
+  .cell.flagged::before {
+    content: "🚩"; /* Flag icon */
+  }
+  
+  /* Styling for mines */
+  .cell.mine {
+    background-color: #f00; /* Mine cell color */
+    color: #fff; /* Text color */
+  }
+  
+  /* Styling for numbers */
+  .cell.number-1 { color: #007bff; } /* Adjust color for number 1 */
+  .cell.number-2 { color: #28a745; } /* Adjust color for number 2 */
+  .cell.number-3 { color: #dc3545; } /* Adjust color for number 3 */
+  .cell.number-4 { color: #ffc107; } /* Adjust color for number 4 */
+  .cell.number-5 { color: #17a2b8; } /* Adjust color for number 5 */
+  .cell.number-6 { color: #f8f9fa; } /* Adjust color for number 6 */
+  .cell.number-7 { color: #6c757d; } /* Adjust color for number 7 */
+  .cell.number-8 { color: #343a40; } /* Adjust color for number 8 */
+  
+  /* Styling for game status */
+  .minesweeper-status {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Styling for buttons */
+  .minesweeper-button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .minesweeper-button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .minesweeper-button:active {
+    background-color: #e0e0e0;
+  }
+  .hidden{
+    display: none;
+}
+  
