@@ -55,16 +55,18 @@ export class MinesweeperView{
             let row = cell.dataset.row;
             let col = cell.dataset.col;
             let cellModel = this.model.minefield[row][col];
-            cell.classList.remove('open','flag','mine');
+             cell.classList.remove('revealed','flagged','mine');
             if(cellModel.open){
-                cell.classList.add('open');
+                cell.classList.add('revealed');
                 if(cellModel.mine){
                     cell.classList.add('mine');
                 }else{
                     cell.textContent = cellModel.value;
+                    cell.classList.add('number-'+cellModel.value);
                 }
             }else if(cellModel.flag){
-                cell.classList.add('flag');
+                cell.classList.add('flagged');
+                cell.textContent ="🚩";
             }
         });
     }
@@ -75,6 +77,7 @@ export class MinesweeperView{
                 let row = cell.dataset.row;
                 let col = cell.dataset.col;
                 this.model.openCell(row,col);
+                console.log('click', row, col);
                 this.renderMinefield();
             });
             cell.addEventListener('contextmenu',(e)=>{
@@ -82,6 +85,7 @@ export class MinesweeperView{
                 let row = cell.dataset.row;
                 let col = cell.dataset.col;
                 this.model.setFlag(row,col);
+                console.log('right click', this.model.minefield[row][col].flag);
                 this.renderMinefield();
             });
         });

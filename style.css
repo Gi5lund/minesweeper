@@ -30,13 +30,13 @@
   }
   
   /* Styling for revealed cells */
-  .cell.revealed {
+   .revealed {
     background-color: #fff; /* Adjust revealed cell color */
     cursor: default;
   }
   
   /* Styling for flagged cells */
-  .cell.flagged::before {
+  .cell .flagged::before {
     content: "🚩"; /* Flag icon */
   }
   
@@ -47,14 +47,14 @@
   }
   
   /* Styling for numbers */
-  .cell.number-1 { color: #007bff; } /* Adjust color for number 1 */
-  .cell.number-2 { color: #28a745; } /* Adjust color for number 2 */
-  .cell.number-3 { color: #dc3545; } /* Adjust color for number 3 */
-  .cell.number-4 { color: #ffc107; } /* Adjust color for number 4 */
-  .cell.number-5 { color: #17a2b8; } /* Adjust color for number 5 */
-  .cell.number-6 { color: #f8f9fa; } /* Adjust color for number 6 */
-  .cell.number-7 { color: #6c757d; } /* Adjust color for number 7 */
-  .cell.number-8 { color: #343a40; } /* Adjust color for number 8 */
+  .number-1 { color: #007bff; } /* Adjust color for number 1 */
+  .number-2 { color: #28a745; } /* Adjust color for number 2 */
+  .number-3 { color: #dc3545; } /* Adjust color for number 3 */
+  .number-4 { color: #ffc107; } /* Adjust color for number 4 */
+  .number-5 { color: #17a2b8; } /* Adjust color for number 5 */
+  .number-6 { color: #f8f9fa; } /* Adjust color for number 6 */
+  .number-7 { color: #6c757d; } /* Adjust color for number 7 */
+  .number-8 { color: #343a40; } /* Adjust color for number 8 */
   
   /* Styling for game status */
   .minesweeper-status {

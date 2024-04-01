@@ -1,9 +1,15 @@
 export class Minefield{
-    constructor(row,col){
+    constructor(row,col,numMines){
         this.row = row;
         this.col = col;
         this.minefield = [];
+        this.minefield=this.initMinefield(numMines);
+    }
+    initMinefield(numMines){
         this.minefield = this.createMinefield();
+        this.placeMines(numMines);
+        this.setSurroundingMinesCount();
+        return this.minefield;
     }
     createMinefield(){
         let minefield = [];
@@ -30,14 +36,18 @@ export class Minefield{
                 minesPlaced++;
             }
         }
+        this.countSurroundingMines();
+        return this.minefield;
     }
     setFlag(row,col){
         this.minefield[row][col].flag = !this.minefield[row][col].flag;
+        return this.minefield;
     }
     isOpen(row,col) {
         return this.minefield[row][col].open;
     }
     countSurroundingMines(row,col){
+       
         let count = 0;
         for(let i=-1;i<=1;i++){
             for(let j=-1;j<=1;j++){
@@ -48,6 +58,7 @@ export class Minefield{
                 }
             }
         }
+   
         return count;
     }
     isValidPosition(row,col){
@@ -75,9 +86,21 @@ export class Minefield{
                     this.minefield[row+i][col+j].open = true;
                     if(this.countSurroundingMines(row+i,col+j)===0){
                         this.openSurroundingCells(row+i,col+j);
+                        console.log('opening surrounding cells');
+                        console.table(this.minefield);
                     }
                 }
             }
         }
+    }
+    setSurroundingMinesCount(){
+        for(let i=0;i<this.row;i++){
+            for(let j=0;j<this.col;j++){
+                if(!this.minefield[i][j].mine){
+                    this.minefield[i][j].value = this.countSurroundingMines(i,j);
+                }
+            }
+        }
+        return this.minefield;
     }
 }
