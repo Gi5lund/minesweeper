@@ -70,29 +70,54 @@ export class Minefield{
     //open cells in the minefield: if the cell is not a mine and not open, open it. If it's a mine, game over. if it's a cell with no surrounding mines, open all surrounding cells with no surrounding mines as well using a flood fill algorithm
 
     openCell(row,col){
-        if(this.minefield[row][col].mine){
+        let cell = this.minefield[row][col];
+        let testCell;
+        cell.open = true;
+        if(cell.mine){
             console.log('Game Over');
-        }else if(!this.minefield[row][col].open){
-            this.minefield[row][col].open = true;
-            if(this.countSurroundingMines(row,col)===0){
-                this.openSurroundingCells(row,col);//flood fill algorithm to reveal all empty cells around the clicked
-            }
-        }
-    }
-    openSurroundingCells(row,col){
-        for(let i=-1;i<=1;i++){
-            for(let j=-1;j<=1;j++){
-                if(this.isValidPosition(row+i,col+j) && !this.minefield[row+i][col+j].mine && !this.minefield[row+i][col+j].open){
-                    this.minefield[row+i][col+j].open = true;
-                    if(this.countSurroundingMines(row+i,col+j)===0){
-                        this.openSurroundingCells(row+i,col+j);
-                        console.log('opening surrounding cells');
-                        console.table(this.minefield);
+            return;
+        } if(cell.value>0){
+            return;
+        } else{
+            // this.minefield[row][col].open = true;
+            // if(this.countSurroundingMines(row,col)===0){
+            //     this.openSurroundingCells(row,col);//flood fill algorithm to reveal all empty cells around the clicked
+            // }
+            for(let i=row-1;i<=row+1;i++){
+                for(let j=col-1;j<=col+1;j++){
+                    if(i===row && j===col){continue;}
+                    if(this.isValidPosition(i,j)){
+                        testCell = this.minefield[i][j];
+                        if(!testCell.open){
+                            this.openCell(i,j);
+                        }
                     }
                 }
             }
         }
     }
+    // openSurroundingCells(row,col){
+    //     let cell=this.minefield[row][col];
+    //     cell.open=true;
+    //     if(cell.value>0){
+    //         return ;
+    //     }else{
+    //         for(let i=-1;i<=1;i++){
+    //             for(let j=-1;j<=1;j++){
+    //                  let testCell=this.minefield[row+i][col+j];
+    //                 if(this.isValidPosition(row+i,col+j) && !this.minefield[row+i][col+j].mine ){
+    //                 this.minefield[row+i][col+j].open = true;
+    //                 if(this.countSurroundingMines(row+i,col+j)===0){
+    //                     console.log('opening surrounding cells');
+    //                     this.openSurroundingCells(row+i,col+j);
+                        
+    //                     console.table(this.minefield);
+    //                 }
+    //             }
+    //         }
+    //         }
+    //     }
+    // }
     setSurroundingMinesCount(){
         for(let i=0;i<this.row;i++){
             for(let j=0;j<this.col;j++){
