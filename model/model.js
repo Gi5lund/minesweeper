@@ -88,7 +88,7 @@ export class Minefield{
                     if(i===row && j===col){continue;}
                     if(this.isValidPosition(i,j)){
                         testCell = this.minefield[i][j];
-                        if(!testCell.open){
+                        if(!testCell.open&&!testCell.mine){
                             this.openCell(i,j);
                         }
                     }
