@@ -75,20 +75,18 @@ export class Minefield{
         cell.open = true;
         if(cell.mine){
             console.log('Game Over');
+            // alle celler skal åbnes og spillet er tabt
             return;
         } if(cell.value>0){
             return;
         } else{
-            // this.minefield[row][col].open = true;
-            // if(this.countSurroundingMines(row,col)===0){
-            //     this.openSurroundingCells(row,col);//flood fill algorithm to reveal all empty cells around the clicked
-            // }
+            
             for(let i=row-1;i<=row+1;i++){
                 for(let j=col-1;j<=col+1;j++){
                     if(i===row && j===col){continue;}
                     if(this.isValidPosition(i,j)){
                         testCell = this.minefield[i][j];
-                        if(!testCell.open&&!testCell.mine){
+                        if(!testCell.open && !testCell.mine && !testCell.flag){
                             this.openCell(i,j);
                         }
                     }
@@ -96,28 +94,7 @@ export class Minefield{
             }
         }
     }
-    // openSurroundingCells(row,col){
-    //     let cell=this.minefield[row][col];
-    //     cell.open=true;
-    //     if(cell.value>0){
-    //         return ;
-    //     }else{
-    //         for(let i=-1;i<=1;i++){
-    //             for(let j=-1;j<=1;j++){
-    //                  let testCell=this.minefield[row+i][col+j];
-    //                 if(this.isValidPosition(row+i,col+j) && !this.minefield[row+i][col+j].mine ){
-    //                 this.minefield[row+i][col+j].open = true;
-    //                 if(this.countSurroundingMines(row+i,col+j)===0){
-    //                     console.log('opening surrounding cells');
-    //                     this.openSurroundingCells(row+i,col+j);
-                        
-    //                     console.table(this.minefield);
-    //                 }
-    //             }
-    //         }
-    //         }
-    //     }
-    // }
+   
     setSurroundingMinesCount(){
         for(let i=0;i<this.row;i++){
             for(let j=0;j<this.col;j++){
