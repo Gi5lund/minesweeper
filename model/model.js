@@ -2,6 +2,7 @@ export class Minefield{
     constructor(row,col,numMines){
         this.row = row;
         this.col = col;
+        this.numMines = numMines;
         this.minefield = [];
         this.minefield=this.initMinefield(numMines);
     }
@@ -41,6 +42,12 @@ export class Minefield{
     }
     setFlag(row,col){
         this.minefield[row][col].flag = !this.minefield[row][col].flag;
+
+        if (this.checkWin()) {
+            console.log('You won!');
+            //do something to end the game
+        }
+
         return this.minefield;
     }
     isOpen(row,col) {
@@ -93,6 +100,11 @@ export class Minefield{
                 }
             }
         }
+
+        if (this.checkWin()) {
+            console.log('You won!');
+            //do something to end the game
+        }
     }
    
     setSurroundingMinesCount(){
@@ -104,5 +116,29 @@ export class Minefield{
             }
         }
         return this.minefield;
+    }
+
+    checkWin(){
+        let openedCells = 0;
+        let correctFlags = 0;
+        let mineCount = 0;
+        for (let i = 0; i < this.row; i++) {
+            for(let j = 0; j < this.col; j++){
+                const cell = this.minefield[i][j];
+                if(cell.mine){
+                    mineCount++;
+                    console.log('mineCount: ', mineCount);
+                    if(cell.flag){
+                        correctFlags++;
+                        console.log('correctFlags: ', correctFlags);
+                    }
+                } else if (cell.open) {
+                    openedCells++;
+                    // console.log('openedCells: ', openedCells);
+                }
+            }
+        }
+        
+        return correctFlags === this.numMines && openedCells === (this.row * this.col - mineCount);
     }
 }
