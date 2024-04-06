@@ -4,14 +4,20 @@ import { MinesweeperView } from "./view/view.js";
 
 window.addEventListener('DOMContentLoaded',start);
 function start() {
-    const minefield = new Minefield(10,15,15); // 10x15 minefield with 15 mines
+    const minefield = new Minefield(8,9,3); // 10x15 minefield with 15 mines
     // minefield.initMinefield(15); // 15 mines
     console.log(minefield);
     const view = new MinesweeperView(minefield);
     view.renderMinefield();
+    minefield.updateMineCounter();
+
     setupEventlistners();
 }
 function setupEventlistners() {
+    const smiley = document.getElementById('smileyButton');
+    smiley.addEventListener('click',()=>{
+        location.reload();
+    });
     // document.querySelector('.reset').addEventListener('click',()=>{
     //     console.log('reset');
     // });
