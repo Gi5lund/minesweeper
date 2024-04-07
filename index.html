@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" type image/png href="./images/bomb-favicon.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <title>MineSweeper</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>MineSweeper</h1>
+    <h3>Difficulties</h3>
+    <button id="easy">Easy</button>
+    <button id="medium">Medium</button>
+    <button id="hard">Hard</button>
     <div id="mineCounter">number of mines left: 15</div>
     <div id="timer">Time elapsed: 0</div>
     <button id="smileyButton">🙂</button>
     <div id="board">
-        <div id="minefield" >
-            
-        </div>
+      <div id="minefield"></div>
     </div>
+    
 
     <script type="module" src="script.js"></script>
-</body>
+  </body>
 </html>

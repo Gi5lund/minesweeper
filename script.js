@@ -18,6 +18,28 @@ function setupEventlistners() {
     smiley.addEventListener('click',()=>{
         location.reload();
     });
+    document.getElementById('easy').addEventListener('click', () => {
+        const minefield = new Minefield(8,9,10);
+        const view = new MinesweeperView(minefield);
+        view.renderMinefield();
+        minefield.updateMineCounter();
+        setupEventlistners();
+    });
+    document.getElementById('medium').addEventListener('click', () => {
+        const minefield = new Minefield(16,16,40); 
+        const view = new MinesweeperView(minefield);
+        view.renderMinefield();
+        minefield.updateMineCounter();
+        setupEventlistners();
+    }); 
+    document.getElementById('hard').addEventListener('click', () => {
+        const minefield = new Minefield(16,30,99); 
+        const view = new MinesweeperView(minefield);
+        view.renderMinefield();
+        minefield.updateMineCounter();
+        setupEventlistners();
+    });
+
     // document.querySelector('.reset').addEventListener('click',()=>{
     //     console.log('reset');
     // });
