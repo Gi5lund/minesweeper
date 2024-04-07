@@ -1,16 +1,16 @@
-:root{
-    --COLS: 10;
-    --ROWS:10;
+:root {
+  --COLS: 10;
+  --ROWS: 10;
 }
-#minefield{
-    display: grid;
-    border: 2px solid #000; /* Grid border */
-    grid-template-columns: repeat(var(--COLS), 40px); 
-  }
-  #board{
-   display: flex;
-    justify-content: center;
-    align-items: center;
+#minefield {
+  display: grid;
+  border: 2px solid #000; 
+  grid-template-columns: repeat(var(--COLS), 40px);
+}
+#board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #smileyButton {
   font-size: 40px;
@@ -20,14 +20,16 @@
   background-color: #f0f0f0;
   padding: 10px;
   margin: 10px;
-  }
-  #smileyButton:hover {
-    background-color: #e0e0e0;
-  }
-  #smileyButton:active {
-    background-color: #d0d0d0;
 }
-#easy, #medium, #hard{
+#smileyButton:hover {
+  background-color: #e0e0e0;
+}
+#smileyButton:active {
+  background-color: #d0d0d0;
+}
+#easy,
+#medium,
+#hard {
   padding: 10px 20px;
   margin: 0 10px;
   font-size: 16px;
@@ -36,89 +38,106 @@
   border-radius: 4px;
 }
 #easy {
-  background-color: #4CAF50;
+  background-color: #4caf50;
 }
 #medium {
-  background-color: #FFEB3B;
-} 
+  background-color: #ffeb3b;
+}
 #hard {
-  background-color: #F44336;} 
-
-
-/* Cell styling */
-  .cell {
-    width: 40px; /* Adjust cell width */
-    height: 40px; /* Adjust cell height */
-    background-color: #c0c0c0; /* Default cell color */
-  /*  border: 2px outset #ececec;  Cell border */
-    border: 3px solid;
-	border-color: #7d7d7d #fff #fff #7d7d7d;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    font-size: 20px; /* Adjust font size */
-    color: #333; /* Text color */
-    cursor: pointer;
-    box-sizing: border-box;
-    text-align: center;
-  }
-  
-  /* Styling for revealed cells */
-   .revealed {
-    background-color: #fff; /* Adjust revealed cell color */
-    cursor: default;
-  }
-  
-  /* Styling for flagged cells */
-  .cell .flagged::before {
-    content: "🚩"; /* Flag icon */
-  }
-  
-  /* Styling for mines */
-  .cell.mine {
-    background-color: #f00; /* Mine cell color */
-    color: #fff; /* Text color */
-    
-  }
-  
-  /* Styling for numbers */
-  .number-1 { color: #007bff; } /* Adjust color for number 1 */
-  .number-2 { color: #28a745; } /* Adjust color for number 2 */
-  .number-3 { color: #dc3545; } /* Adjust color for number 3 */
-  .number-4 { color: #ffc107; } /* Adjust color for number 4 */
-  .number-5 { color: #17a2b8; } /* Adjust color for number 5 */
-  .number-6 { color: #f8f9fa; } /* Adjust color for number 6 */
-  .number-7 { color: #6c757d; } /* Adjust color for number 7 */
-  .number-8 { color: #343a40; } /* Adjust color for number 8 */
-  
-  /* Styling for game status */
-  .minesweeper-status {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  /* Styling for buttons */
-  .minesweeper-button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-  }
-  
-  .minesweeper-button:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .minesweeper-button:active {
-    background-color: #e0e0e0;
-  }
-  .hidden{
-    display: none;
+  background-color: #f44336;
 }
-#frame{
-  position:fixed;
+#easy:hover,
+#medium:hover,
+#hard:hover {
+  transform: scale(1.05);
+}
+#easy:active,
+#medium:active,
+#hard:active {
+  transform: scale(0.95);
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  background-color: #c0c0c0;
+
+  border: 3px solid;
+  border-color: #7d7d7d #fff #fff #7d7d7d;
+
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.revealed {
+  background-color: #fff;
+  cursor: default;
+  color: white;
+}
+
+.cell .flagged::before {
+  content: "🚩";
+}
+
+.cell.mine {
+  background-color: #f00;
+  color: #fff;
+}
+
+.number-1 {
+  color: #007bff;
+}
+.number-2 {
+  color: #28a745;
+}
+.number-3 {
+  color: #dc3545;
+}
+.number-4 {
+  color: #ffc107;
+}
+.number-5 {
+  color: #17a2b8;
+}
+.number-6 {
+  color: #f8f9fa;
+}
+.number-7 {
+  color: #6c757d;
+}
+.number-8 {
+  color: #343a40;
+}
+
+.minesweeper-status {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.minesweeper-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.minesweeper-button:hover {
+  background-color: #f0f0f0;
+}
+
+.minesweeper-button:active {
+  background-color: #e0e0e0;
+}
+.hidden {
+  display: none;
+}
+#frame {
+  position: fixed;
   left: 200px;
-  
 }
+
