@@ -55,6 +55,7 @@ export class MinesweeperView{
             let row = cell.dataset.row;
             let col = cell.dataset.col;
             let cellModel = this.model.minefield[row][col];
+            cell.textContent = '';
              cell.classList.remove('revealed','flagged','mine');
             if(cellModel.open){
                 cell.classList.add('revealed');
