@@ -93,52 +93,44 @@ export class Minefield {
 
     //open cells in the minefield: if the cell is not a mine and not open, open it. If it's a mine, game over. 
     //if it's a cell with no surrounding mines, open all surrounding cells with no surrounding mines as well using a flood fill algorithm
-    openCell(row, col) {
 
+    openCell(row, col) {
         //time starter
         if (this.startTime === null) {
             this.startTimer();
             this.startTime = new Date();
         }
-
-
-        let cell = this.minefield[row][col];
-        let testCell;
-        if(!cell.flag){
-           
-        
-        cell.open = true;
-        if (this.checkWin()) {
-            console.log('You won!');
-            const smiley = document.getElementById('smileyButton');
-            smiley.innerHTML = '😎';
-            this.stopTimer();
-            //do something to end the game
-        }
-        if (cell.mine) {
-            console.log('Game Over');
-            this.checkGameOver();
-            // alle celler skal åbnes og spillet er tabt
-            return;
-        } if (cell.value > 0) {
-            return;
-        } else {
-
-            for (let i = row - 1; i <= row + 1; i++) {
-                for (let j = col - 1; j <= col + 1; j++) {
-                    if (i === row && j === col) { continue; }
-                    if (this.isValidPosition(i, j)) {
-                        testCell = this.minefield[i][j];
-                        if (!testCell.open && !testCell.mine && !testCell.flag) {
-                            this.openCell(i, j);
+            let cell = this.minefield[row][col];
+            let testCell;
+        if(!cell.flag){ //hvis cellen er flagget, skal den ikke kunne åbnes!        
+            cell.open = true;
+            if (this.checkWin()) {
+                console.log('You won!');
+                const smiley = document.getElementById('smileyButton');
+                smiley.innerHTML = '😎';
+                this.stopTimer();
+            }
+            if (cell.mine) {
+                console.log('Game Over');
+                this.checkGameOver();
+                // alle celler skal åbnes og spillet er tabt
+                return;
+            } if (cell.value > 0) {
+                return;
+            } else {
+                for (let i = row - 1; i <= row + 1; i++) {
+                    for (let j = col - 1; j <= col + 1; j++) {
+                        if (i === row && j === col) { continue; }
+                        if (this.isValidPosition(i, j)) {
+                            testCell = this.minefield[i][j];
+                            if (!testCell.open && !testCell.mine && !testCell.flag) {
+                                this.openCell(i, j);
+                            }
                         }
                     }
                 }
             }
-           
         }
-    }
-
     }
 
 
