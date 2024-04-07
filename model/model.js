@@ -58,6 +58,8 @@ export class Minefield {
 
         if (this.checkWin()) {
             console.log('You won!');
+            const smiley = document.getElementById('smileyButton');
+                smiley.innerHTML = '😎';
             this.stopTimer();
             //do something to end the game
         }
@@ -103,6 +105,13 @@ export class Minefield {
         let cell = this.minefield[row][col];
         let testCell;
         cell.open = true;
+        if (this.checkWin()) {
+            console.log('You won!');
+            const smiley = document.getElementById('smileyButton');
+            smiley.innerHTML = '😎';
+            this.stopTimer();
+            //do something to end the game
+        }
         if (cell.mine) {
             console.log('Game Over');
             this.checkGameOver();
@@ -123,13 +132,7 @@ export class Minefield {
                     }
                 }
             }
-            if (this.checkWin()) {
-                console.log('You won!');
-                const smiley = document.getElementById('smileyButton');
-                smiley.innerHTML = '😎';
-                this.stopTimer();
-                //do something to end the game
-            }
+           
         }
 
     }
@@ -153,21 +156,26 @@ export class Minefield {
         for (let i = 0; i < this.row; i++) {
             for (let j = 0; j < this.col; j++) {
                 const cell = this.minefield[i][j];
-                if (cell.mine) {
-                    mineCount++;
-                    //console.log('mineCount: ', mineCount);
-                    if (cell.flag) {
-                        correctFlags++;
-                        //console.log('correctFlags: ', correctFlags);
-                    }
-                } else if (cell.open) {
+                if (cell.open) {
                     openedCells++;
                     // console.log('openedCells: ', openedCells);
+                }else{
+                if (cell.flag&&cell.mine) {
+                    correctFlags++;
+                    mineCount++;                   
+                  
+                } 
+                
+                 if (cell.mine&&!cell.flag) {
+                    mineCount++;
                 }
             }
+            }
         }
-
-        return correctFlags === this.numMines || openedCells === (this.row * this.col - mineCount);
+        console.log('openedCells: ', openedCells);
+        console.log('minefield: ', this.row * this.col - mineCount);
+        console.log('correctFlags: ', correctFlags);
+        return correctFlags === mineCount && openedCells === (this.row * this.col - correctFlags);
     }
     checkGameOver() {
         for (let i = 0; i < this.row; i++) {
