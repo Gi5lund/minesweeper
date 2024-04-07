@@ -42,6 +42,7 @@
     color: #333; /* Text color */
     cursor: pointer;
     box-sizing: border-box;
+    text-align: center;
   }
   
   /* Styling for revealed cells */
