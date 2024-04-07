@@ -33,6 +33,7 @@ export class MinesweeperView{
                 celldiv.classList.add('cell');
                 if(cell.mine){
                     celldiv.classList.add('mine');
+                    celldiv.innerHTML =`<img src="/images/bomb-favicon.png" alt="bomb" width="40">`;
                 }
                 if(cell.open){
                     celldiv.classList.add('revealed');
@@ -61,6 +62,8 @@ export class MinesweeperView{
                 cell.classList.add('revealed');
                 if(cellModel.mine){
                     cell.classList.add('mine');
+                    // cell.textContent = '💣';
+                   cell.innerHTML =`<img src="/images/bomb-favicon.png" alt="bomb" width="40">`;
                 }else{
                     cell.textContent = cellModel.value;
                     cell.classList.add('number-'+cellModel.value);

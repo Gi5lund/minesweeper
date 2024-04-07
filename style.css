@@ -78,6 +78,7 @@
   .cell.mine {
     background-color: #f00; /* Mine cell color */
     color: #fff; /* Text color */
+    
   }
   
   /* Styling for numbers */
