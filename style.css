@@ -27,7 +27,25 @@
   #smileyButton:active {
     background-color: #d0d0d0;
 }
-  /* Cell styling */
+#easy, #medium, #hard{
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+#easy {
+  background-color: #4CAF50;
+}
+#medium {
+  background-color: #FFEB3B;
+} 
+#hard {
+  background-color: #F44336;} 
+
+
+/* Cell styling */
   .cell {
     width: 40px; /* Adjust cell width */
     height: 40px; /* Adjust cell height */
