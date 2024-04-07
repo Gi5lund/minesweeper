@@ -116,4 +116,8 @@
   .hidden{
     display: none;
 }
+#frame{
+  position:fixed;
+  left: 200px;
   
+}
