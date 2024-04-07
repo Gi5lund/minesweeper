@@ -104,6 +104,9 @@ export class Minefield {
 
         let cell = this.minefield[row][col];
         let testCell;
+        if(!cell.flag){
+           
+        
         cell.open = true;
         if (this.checkWin()) {
             console.log('You won!');
@@ -134,6 +137,7 @@ export class Minefield {
             }
            
         }
+    }
 
     }
 
