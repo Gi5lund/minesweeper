@@ -46,6 +46,10 @@ export class Minefield {
     }
     setFlag(row, col) {
         let cell = this.minefield[row][col];
+        if(cell.open){
+            return;
+        }
+        
         cell.flag = cell.flag;
         this.minefield[row][col].flag = !this.minefield[row][col].flag;
 
@@ -54,6 +58,7 @@ export class Minefield {
         } else {
             this.flagsPlaced--;
         }
+        
         this.updateMineCounter();
 
         if (this.checkWin()) {
